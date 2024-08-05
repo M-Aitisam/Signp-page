@@ -1,0 +1,30 @@
+﻿@page "/signup"
+@inject NavigationManager Navigation
+@inject Dal.LoginDal loginDal
+
+<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Username:</label>
+        <InputText @bind-Value="user.Username" />
+    </div>
+
+    <div>
+        <label>Password:</label>
+        <InputText @bind-Value="user.Password" type="password" />
+    </div>
+
+    <button type="submit">Sign Up</button>
+</EditForm>
+
+@code {
+    private Model.LoginModel user = new Model.LoginModel();
+
+    private void HandleValidSubmit()
+    {
+        loginDal.RegisterUser(user);
+        Navigation.NavigateTo("/login");
+    }
+}

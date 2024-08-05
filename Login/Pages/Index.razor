@@ -1,0 +1,202 @@
+﻿@page "/index"
+@inject NavigationManager Navigation
+
+<!-- Main Container -->
+<div class="container">
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="title">Welcome to Your Dashboard</h1>
+        <div class="user-info">
+            <h3>Welcome, @username!</h3>
+            <button class="logout-button" @onclick="Logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index" class="nav-link">Home</a></li>
+            <li><a href="/profile" class="nav-link">Profile</a></li>
+            <li><a href="/settings" class="nav-link">Settings</a></li>
+            <li><a href="/help" class="nav-link">Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <section class="info-section">
+            <h2>Dashboard Overview</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur purus nec purus scelerisque, id varius magna consequat.</p>
+        </section>
+
+        <section class="stats-section">
+            <h2>Your Statistics</h2>
+            <div class="stats-card">
+                <h3>Total Visits</h3>
+                <p>1234</p>
+            </div>
+            <div class="stats-card">
+                <h3>Messages</h3>
+                <p>56</p>
+            </div>
+            <div class="stats-card">
+                <h3>Alerts</h3>
+                <p>8</p>
+            </div>
+        </section>
+
+        <section class="activity-section">
+            <h2>Recent Activities</h2>
+            <ul class="activity-list">
+                <li>Activity 1: Lorem ipsum dolor sit amet.</li>
+                <li>Activity 2: Consectetur adipiscing elit.</li>
+                <li>Activity 3: Nulla facilisi, proin varius.</li>
+                <li>Activity 4: Sed do eiusmod tempor incididunt.</li>
+                <li>Activity 5: Ut labore et dolore magna aliqua.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 YourCompany. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- Inline CSS for Styling -->
+<style>
+    .container {
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f8f9fa;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .title {
+        margin: 0;
+        font-size: 24px;
+        color: #007bff;
+    }
+
+    .user-info h3 {
+        margin: 0;
+        color: #343a40;
+    }
+
+    .logout-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .navbar {
+        background-color: #007bff;
+        padding: 10px 0;
+        margin-bottom: 20px;
+    }
+
+    .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar li {
+        margin: 0 15px;
+    }
+
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+    .main-content {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .info-section, .stats-section, .activity-section {
+        margin-bottom: 20px;
+    }
+
+    .info-section h2, .stats-section h2, .activity-section h2 {
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+    }
+
+    .stats-card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .stats-card h3 {
+        margin: 0;
+        color: #343a40;
+    }
+
+    .stats-card p {
+        font-size: 24px;
+        color: #007bff;
+    }
+
+    .activity-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .activity-list li {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+    }
+
+    .footer p {
+        margin: 0;
+        color: #6c757d;
+    }
+</style>
+
+@code {
+    private string username = "User";
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}
