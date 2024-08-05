@@ -1,5 +1,6 @@
 ﻿@page "/index"
 @inject NavigationManager Navigation
+@inject Dal.LoginDal loginDal
 
 <!-- Main Container -->
 <div class="container">
@@ -63,6 +64,25 @@
     </footer>
 </div>
 
+
+
+@code {
+    private string username = "User";
+
+    private async Task Logout()
+    {
+        bool success = await loginDal.LogoutUser(username);
+
+        if (success)
+        {
+            Navigation.NavigateTo("/login");
+        }
+        else
+        {
+            Console.WriteLine("Error cannot Logout the page ");
+        }
+    }
+}
 <!-- Inline CSS for Styling -->
 <style>
     .container {
@@ -192,11 +212,3 @@
     }
 </style>
 
-@code {
-    private string username = "User";
-
-    private void Logout()
-    {
-        Navigation.NavigateTo("/login");
-    }
-}
